@@ -8,7 +8,7 @@ async function bootstrap() {
 
   await register(app);
 
-  await app.listen(process.env.SERVER_PORT, async() => {
+  await app.listen(String(process.env.SERVER_PORT), async() => {
     console.log(`> Ready on http://localhost:${process.env.SERVER_PORT}`);
   });
 }

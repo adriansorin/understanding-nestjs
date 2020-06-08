@@ -51,23 +51,24 @@ export class UsersService {
         username: 'scroodge',
         name: 'Scroodge McDuck',
         email: 's@mcduck.com',
-      },
+      }
     ];
   }
 
   async findOrCreate(profile: GoogleProfile): Promise<User> {
     const found = this.users.find(user => user.googleID === profile.id);
+    console.log(found);
 
     if (found) {
       return found;
     }
-    
+
     const newUser = {
       userID: this.users.length + 1,
       googleID: profile.id,
       username: profile.displayName,
       name: profile.name.familyName || profile.name.givenName,
-      email: profile.emails[0].value,
+      email: profile.emails ? profile.emails[0].value : '',
     };
 
     this.users.push(newUser);

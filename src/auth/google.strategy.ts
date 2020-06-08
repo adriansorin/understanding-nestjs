@@ -22,6 +22,6 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
   ): Promise<any> {
     const user = this.usersService.findOrCreate(profile);
 
-    cb(null, user);
+    cb(undefined, user);
   }
 }
